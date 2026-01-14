@@ -1,0 +1,32 @@
+
+struct extern Color {
+    u8 r;
+    u8 g;
+    u8 b;
+    u8 a;
+}
+u32 screen_width = 200;
+u32 screen_height = 200;
+void extern InitWindow(i32 w, i32 h, const char* title);
+void extern SetTargetFPS(i32 fps);
+bool extern WindowShouldClose();
+void extern BeginDrawing();
+void extern EndDrawing();
+void extern ClearBackground(Color color);
+void extern DrawText(const char *text, int posX, int posY, int fontSize, Color color);       // Draw text (using default font)
+
+auto gray = Color { r: 130, g: 130, b: 130, a: 255 };
+auto bg_color = Color { 76, 63, 47, 255 };
+InitWindow(screen_width, screen_height, "quark raylib".data());
+SetTargetFPS(60);
+bool is_close = false;
+
+while(is_close != true) {
+    ClearBackground(bg_color);
+    BeginDrawing();
+        DrawText("hello quark".data(), 10, 80, 20, gray);
+    EndDrawing();
+    is_close = WindowShouldClose();
+}
+
+
